@@ -1,6 +1,6 @@
 <?php
 
-namespace Mannew\Bundle\HipChatBundle\DependencyInjection;
+namespace ManneW\HipChatBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

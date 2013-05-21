@@ -30,6 +30,7 @@ class ManneWHipChatExtensionTest extends \PHPUnit_Framework_TestCase
         $this->extension->load(array($config), $container = $this->getContainer());
 
         $this->assertEquals($testToken, $container->getParameter('mannew_hipchat.auth_token'));
+        $this->assertTrue($container->hasDefinition('hipchat'));
     }
 
 

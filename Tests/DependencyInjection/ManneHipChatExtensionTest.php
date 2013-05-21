@@ -33,7 +33,6 @@ class ManneWHipChatExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($container->hasDefinition('hipchat'));
     }
 
-
     protected function setUp()
     {
         $this->extension = new ManneWHipChatExtension();

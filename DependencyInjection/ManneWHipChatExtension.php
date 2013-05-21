@@ -21,7 +21,6 @@ class ManneWHipChatExtension extends Extension
         );
         $loader->load('hipchat.xml');
 
-
         if (!isset($config['auth_token'])) {
             throw new \InvalidArgumentException(
                 'The "auth_token" must be set'

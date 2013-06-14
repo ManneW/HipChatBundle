@@ -28,7 +28,7 @@ class ManneWHipChatExtension extends Extension
         }
 
         $container->setParameter(
-            'mannew_hipchat.auth_token',
+            'manne_w_hip_chat.auth_token',
             $config['auth_token']
         );
     }

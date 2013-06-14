@@ -3,12 +3,12 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="mannew_hipchat.auth_token" />
+        <parameter key="manne_w_hip_chat.auth_token" />
     </parameters>
 
     <services>
         <service id="hipchat" class="HipChat\HipChat">
-            <argument>%mannew_hipchat.auth_token%</argument>
+            <argument>%manne_w_hip_chat.auth_token%</argument>
         </service>
     </services>
 </container>

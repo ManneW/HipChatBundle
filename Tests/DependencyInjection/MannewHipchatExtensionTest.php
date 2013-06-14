@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class MannewHipchatExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var MannewHipChatExtension
+     * @var MannewHipchatExtension
      */
     private $extension;
 

@@ -1,4 +1,4 @@
-# ManneWHipChatBundle
+# MannewHipchatBundle
 
 [![Build Status](https://travis-ci.org/ManneW/HipChatBundle.png?branch=master)](https://travis-ci.org/ManneW/HipChatBundle)
 

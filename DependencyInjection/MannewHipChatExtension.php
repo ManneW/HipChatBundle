@@ -1,13 +1,13 @@
 <?php
 
-namespace ManneW\HipChatBundle\DependencyInjection;
+namespace Mannew\HipchatBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class ManneWHipChatExtension extends Extension
+class MannewHipchatExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {

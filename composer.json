@@ -14,8 +14,8 @@
     ],
     "autoload": {
         "psr-0": {
-            "ManneW\\HipChatBundle": ""
+            "Mannew\\HipchatBundle": ""
         }
     },
-    "target-dir": "ManneW/HipChatBundle"
+    "target-dir": "Mannew/HipchatBundle"
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace ManneW\HipChatBundle\Tests\DependencyInjection;
+namespace Mannew\HipchatBundle\Tests\DependencyInjection;
 
-use ManneW\HipChatBundle\DependencyInjection\ManneWHipChatExtension;
+use Mannew\HipchatBundle\DependencyInjection\MannewHipchatExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class ManneWHipChatExtensionTest extends \PHPUnit_Framework_TestCase
+class MannewHipchatExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var MannewHipChatExtension
@@ -35,7 +35,7 @@ class ManneWHipChatExtensionTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->extension = new ManneWHipChatExtension();
+        $this->extension = new MannewHipchatExtension();
     }
 
     private function getContainer()

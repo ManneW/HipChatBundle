@@ -30,7 +30,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new ManneW\HipChatBundle\ManneWHipChatBundle(),
+        new Mannew\HipchatBundle\MannewHipchatBundle(),
     );
 } ?>
 ```

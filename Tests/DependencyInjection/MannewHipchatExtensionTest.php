@@ -33,11 +33,19 @@ class MannewHipchatExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($container->hasDefinition('hipchat'));
     }
 
+    /**
+     * Initialize the extension.
+     */
     protected function setUp()
     {
         $this->extension = new MannewHipchatExtension();
     }
 
+    /**
+     * Constructs and returns a ContainerBuilder to be used for testing purposes.
+     *
+     * @return ContainerBuilder
+     */
     private function getContainer()
     {
         $container = new ContainerBuilder();

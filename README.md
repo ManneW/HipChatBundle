@@ -55,6 +55,10 @@ $hipChat = $this->container->get('hipchat');
 
 ```
 
+The bundle also provides a command to send messages from the command:
+
+	$ app/console hipchat:send:message 'Room name' 'Message content' 'Sender name' --color=red
+
 
 # Further reading
 

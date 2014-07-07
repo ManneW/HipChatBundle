@@ -9,6 +9,12 @@
     <services>
         <service id="hipchat" class="HipChat\HipChat">
             <argument>%mannew_hipchat.auth_token%</argument>
+            <call method="set_verify_ssl">
+                <argument>%mannew_hipchat.verify_ssl%</argument>
+            </call>
+            <call method="set_proxy">
+                <argument>%mannew_hipchat.proxy_address%</argument>
+            </call>
         </service>
     </services>
 </container>

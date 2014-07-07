@@ -21,16 +21,54 @@ class MannewHipchatExtensionTest extends \PHPUnit_Framework_TestCase
         $this->extension->load(array($config), $container = $this->getContainer());
     }
 
+    public function testHipChatServiceIsDefined()
+    {
+        $config = array('auth_token' => uniqid());
+        $container = $this->getContainer();
+        $this->extension->load(array($config), $container);
+
+        $this->assertTrue($container->hasDefinition('hipchat'));
+    }
+
     public function testLoadConfigWithAuthToken()
     {
         $testToken = 'testtoken';
-        $config = array(
-            'auth_token' => $testToken
-        );
+        $this->assertContainerParameterValueEquals('auth_token', $testToken);
+    }
+
+    public function testLoadConfigWithVerifySSLOption()
+    {
+        $this->assertContainerParameterValueEquals('verify_ssl', false);
+        $this->assertContainerParameterValueEquals('verify_ssl', true);
+    }
+
+    public function testLoadConfigWithProxyAddressOption()
+    {
+        $this->assertContainerParameterValueEquals('proxy_address', '127.0.0.1:8888');
+    }
+
+    public function testLoadConfigWithoutProxyAddressOption()
+    {
+        $config = array('auth_token' => uniqid());
+        $this->extension->load(array($config), $container = $this->getContainer());
+        $parameterValue = $container->getParameter('mannew_hipchat.proxy_address');
+
+        $this->assertNull($parameterValue);
+    }
+
+    /**
+     * @param string $parameterName
+     * @param string $expectedValue
+     */
+    protected function assertContainerParameterValueEquals( $parameterName, $expectedValue )
+    {
+        $config = array('auth_token' => uniqid());
+        $config[$parameterName] = $expectedValue;
+        $parameterName = 'mannew_hipchat.' . $parameterName;
         $this->extension->load(array($config), $container = $this->getContainer());
 
-        $this->assertEquals($testToken, $container->getParameter('mannew_hipchat.auth_token'));
-        $this->assertTrue($container->hasDefinition('hipchat'));
+        $parameterValue = $container->getParameter($parameterName);
+        $this->assertEquals($expectedValue, $parameterValue);
     }
 
     /**

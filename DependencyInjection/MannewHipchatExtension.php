@@ -31,5 +31,13 @@ class MannewHipchatExtension extends Extension
             'mannew_hipchat.auth_token',
             $config['auth_token']
         );
+        $container->setParameter(
+            'mannew_hipchat.verify_ssl',
+            $config['verify_ssl']
+        );
+        $container->setParameter(
+            'mannew_hipchat.proxy_address',
+            $config['proxy_address']
+        );
     }
 }

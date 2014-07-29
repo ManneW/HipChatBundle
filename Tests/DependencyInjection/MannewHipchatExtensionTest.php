@@ -18,7 +18,19 @@ class MannewHipchatExtensionTest extends \PHPUnit_Framework_TestCase
     public function testLoadConfigThrowsExceptionOnMissingAuthToken()
     {
         $config = array();
-        $this->extension->load(array($config), $container = $this->getContainer());
+        $this->extension->load(array($config), $container = $this->getEmptyTestContainer());
+    }
+
+    public function testHipChatServiceIsDefined()
+    {
+        $config = array(
+            'auth_token' => uniqid()
+        );
+        $container = $this->getEmptyTestContainer();
+        $this->loadConfigIntoContainer($config, $container);
+        $containerHasDefinitionForHipchatService = $container->hasDefinition('hipchat');
+
+        $this->assertTrue($containerHasDefinitionForHipchatService);
     }
 
     public function testLoadConfigWithAuthToken()
@@ -27,10 +39,58 @@ class MannewHipchatExtensionTest extends \PHPUnit_Framework_TestCase
         $config = array(
             'auth_token' => $testToken
         );
-        $this->extension->load(array($config), $container = $this->getContainer());
+        $container = $this->getEmptyTestContainer();
+        $this->loadConfigIntoContainer($config, $container);
 
-        $this->assertEquals($testToken, $container->getParameter('mannew_hipchat.auth_token'));
-        $this->assertTrue($container->hasDefinition('hipchat'));
+        $this->assertContainerParameterEquals($container, 'auth_token', $testToken);
+    }
+
+    public function testLoadConfigWithVerifySSLOption()
+    {
+        $verifySSL = false;
+        $config = array(
+            'verify_ssl' => $verifySSL,
+            'auth_token' => uniqid(),
+        );
+        $container = $this->getEmptyTestContainer();
+        $this->loadConfigIntoContainer($config, $container);
+
+        $this->assertContainerParameterEquals($container, 'verify_ssl', $verifySSL);
+    }
+
+    public function testLoadConfigWithProxyAddressOption()
+    {
+        $proxyAddress = 'http://127.0.0.1:8888';
+        $config = array(
+            'proxy_address' => $proxyAddress,
+            'auth_token'    => uniqid(),
+        );
+        $container = $this->getEmptyTestContainer();
+        $this->loadConfigIntoContainer($config, $container);
+
+        $this->assertContainerParameterEquals($container, 'proxy_address', $proxyAddress);
+    }
+
+    public function testLoadConfigWithoutProxyAddressOption()
+    {
+        $config = array(
+            'auth_token' => uniqid(),
+        );
+        $container = $this->getEmptyTestContainer();
+        $this->loadConfigIntoContainer($config, $container);
+
+        $this->assertContainerParameterEquals($container, 'proxy_address', null);
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param string $parameterName
+     * @param mixed $value
+     */
+    protected function assertContainerParameterEquals( ContainerBuilder $container, $parameterName, $value )
+    {
+        $parameterValue = $container->getParameter('mannew_hipchat.' . $parameterName);
+        $this->assertEquals($value, $parameterValue);
     }
 
     /**
@@ -46,12 +106,21 @@ class MannewHipchatExtensionTest extends \PHPUnit_Framework_TestCase
      *
      * @return ContainerBuilder
      */
-    private function getContainer()
+    protected function getEmptyTestContainer()
     {
         $container = new ContainerBuilder();
         $container->setParameter('kernel.cache_dir', sys_get_temp_dir());
         $container->setParameter('kernel.bundles', array());
 
         return $container;
+    }
+
+    /**
+     * @param array $config
+     * @param ContainerBuilder $container
+     */
+    protected function loadConfigIntoContainer( array $config, ContainerBuilder $container )
+    {
+        $this->extension->load(array($config), $container);
     }
 }

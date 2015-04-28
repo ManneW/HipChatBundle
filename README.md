@@ -42,8 +42,9 @@ Update your config.yml to contain the a section for this bundle.
 ```yaml
 mannew_hipchat:
 	auth_token: YOUR_HIPCHAT_AUTH_TOKEN_HERE
-	verify_ssl: true  # optional
-	proxy_address: ~  # optional
+	verify_ssl: true    # optional
+	proxy_address: ~    # optional
+	request_timeout: ~  # in seconds, optional
 ```
 
 ## Usage

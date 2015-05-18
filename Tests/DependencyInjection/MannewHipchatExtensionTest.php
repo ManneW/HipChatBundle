@@ -103,7 +103,7 @@ class MannewHipchatExtensionTest extends \PHPUnit_Framework_TestCase
         $container = $this->getEmptyTestContainer();
         $this->loadConfigIntoContainer($config, $container);
 
-        $this->assertContainerParameterEquals($container, 'request_timeout', null);
+        $this->assertContainerParameterEquals($container, 'request_timeout', 15);
     }
 
     /**

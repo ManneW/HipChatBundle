@@ -26,7 +26,7 @@ class Configuration implements ConfigurationInterface
                     ->info('If needed you can specify a proxy that is used when connecting to HipChat.')
                 ->end()
                 ->scalarNode('request_timeout')
-                    ->defaultNull()
+                    ->defaultValue(15)
                     ->info('In seconds. To change the default timeout of a HipChat API request.')
                 ->end()
             ->end();

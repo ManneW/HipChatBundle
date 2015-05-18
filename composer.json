@@ -3,7 +3,7 @@
     "description": "Bundle to integrate the HipChat PHP library for their REST API.",
     "require": {
         "symfony/framework-bundle": "~2.1",
-        "hipchat/hipchat-php": ">=1.0.0"
+        "hipchat/hipchat-php": "~1.4"
     },
     "license": "MIT",
     "authors": [

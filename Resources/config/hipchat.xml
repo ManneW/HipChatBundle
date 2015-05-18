@@ -15,6 +15,9 @@
             <call method="set_proxy">
                 <argument>%mannew_hipchat.proxy_address%</argument>
             </call>
+            <call method="set_request_timeout">
+                <argument>%mannew_hipchat.request_timeout%</argument>
+            </call>
         </service>
     </services>
 </container>

@@ -39,5 +39,9 @@ class MannewHipchatExtension extends Extension
             'mannew_hipchat.proxy_address',
             $config['proxy_address']
         );
+        $container->setParameter(
+            'mannew_hipchat.request_timeout',
+            $config['request_timeout']
+        );
     }
 }

@@ -82,6 +82,30 @@ class MannewHipchatExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertContainerParameterEquals($container, 'proxy_address', null);
     }
 
+    public function testLoadConfigWithRequestTimeoutOption()
+    {
+        $timeout = 60;
+        $config = array(
+            'request_timeout'   => $timeout,
+            'auth_token'        => uniqid(),
+        );
+        $container = $this->getEmptyTestContainer();
+        $this->loadConfigIntoContainer($config, $container);
+
+        $this->assertContainerParameterEquals($container, 'request_timeout', $timeout);
+    }
+
+    public function testLoadConfigWithoutRequestTimeoutOption()
+    {
+        $config = array(
+            'auth_token'        => uniqid(),
+        );
+        $container = $this->getEmptyTestContainer();
+        $this->loadConfigIntoContainer($config, $container);
+
+        $this->assertContainerParameterEquals($container, 'request_timeout', 15);
+    }
+
     /**
      * @param ContainerBuilder $container
      * @param string $parameterName
